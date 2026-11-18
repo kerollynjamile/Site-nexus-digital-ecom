@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   ArrowRight, Code2, Cpu, Layers3, Menu, MessageCircle, Monitor,
-  Rocket, ShieldCheck, Table2, Target, TrendingUp, X, Zap
+  Rocket, ShieldCheck, Table2, Target, TrendingUp, X
 } from "lucide-react";
 import "./App.css";
 
@@ -129,10 +129,10 @@ export default function App() {
             </p>
 
             <ul className="hero-points">
-              <li><Zap size={18} /> Sistemas personalizados</li>
-              <li><Zap size={18} /> Planilhas inteligentes</li>
-              <li><Zap size={18} /> Montagem de PCs</li>
-              <li><Zap size={18} /> Soluções digitais completas</li>
+              <li>Sistemas personalizados</li>
+              <li>Planilhas inteligentes</li>
+              <li>Montagem de PCs</li>
+              <li>Soluções digitais completas</li>
             </ul>
 
             <div className="hero-actions">
@@ -157,7 +157,7 @@ export default function App() {
             </div>
             <div className="art-caption">INOVAÇÃO QUE IMPULSIONA</div>
             <div className="floating-chip chip-one"><Cpu size={18} /> TECNOLOGIA</div>
-            <div className="floating-chip chip-two"><Zap size={18} /> PERFORMANCE</div>
+            <div className="floating-chip chip-two"><TrendingUp size={18} /> PERFORMANCE</div>
           </div>
         </section>
 
@@ -261,7 +261,7 @@ export default function App() {
             </article>
 
             <article className="pillar-card">
-              <div className="pillar-icon"><Zap /></div>
+              <div className="pillar-icon"><ShieldCheck /></div>
               <span>03 / NOSSA MISSÃO</span>
               <h3>Transformar desafios em soluções</h3>
               <p>

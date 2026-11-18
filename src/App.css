@@ -130,7 +130,15 @@
 .hero-description { max-width: 470px; color: #c8d9ed; font-size: 16px; line-height: 1.75; }
 .hero-points { display: grid; gap: 12px; list-style: none; padding: 0; margin: 25px 0 27px; }
 .hero-points li { display: flex; align-items: center; gap: 11px; color: #edf8ff; font-size: 13px; font-weight: 500; }
-.hero-points svg { color: #00dfff; filter: drop-shadow(0 0 6px #00bfff); }
+.hero-points li::before {
+  content: "";
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00dfff;
+  box-shadow: 0 0 9px rgba(0, 215, 255, .8);
+}
 .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
 
 .hero-art { min-height: 430px; position: relative; display: flex; align-items: center; justify-content: center; isolation: isolate; }
