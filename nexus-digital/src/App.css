@@ -503,3 +503,51 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-11px); }
 }
+
+/* Foguete original animado da Nexus */
+.rocket-badge {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  z-index: 5;
+  color: #f2fdff;
+  filter: drop-shadow(0 0 12px #00bfff);
+  transform: rotate(42deg);
+  transform-origin: 50% 65%;
+  animation: rocketFlight 2.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.rocket-badge svg {
+  filter: drop-shadow(0 0 10px rgba(0, 215, 255, .9));
+}
+
+.rocket-trail {
+  position: absolute;
+  width: 9px;
+  height: 34px;
+  left: 20px;
+  bottom: -27px;
+  border-radius: 50% 50% 70% 70%;
+  background: linear-gradient(#fff, #00eaff 38%, rgba(0, 128, 255, 0));
+  filter: blur(3px);
+  transform: rotate(-42deg);
+  animation: rocketFlame .42s ease-in-out infinite alternate;
+}
+
+@keyframes rocketFlight {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(38deg); }
+  25% { transform: translate3d(10px, -13px, 0) rotate(43deg); }
+  55% { transform: translate3d(-3px, -24px, 0) rotate(35deg); }
+  80% { transform: translate3d(-10px, -8px, 0) rotate(41deg); }
+}
+
+@keyframes rocketFlame {
+  from { opacity: .45; scale: .75 .8; }
+  to { opacity: 1; scale: 1.25 1.35; }
+}
+
+@media (max-width: 980px) {
+  .rocket-badge { top: 4%; right: 8%; }
+  .rocket-badge svg { width: 55px; }
+}

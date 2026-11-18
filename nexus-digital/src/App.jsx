@@ -1,7 +1,8 @@
  import React, { useState } from "react";
 import {
   ArrowRight, Code2, Cpu, Layers3, Menu, MessageCircle, Monitor,
-  ShieldCheck, Table2, Target, TrendingUp, X
+  Rocket,
+ShieldCheck, Table2, Target, TrendingUp, X
 } from "lucide-react";
 import "./App.css";
 
@@ -20,7 +21,8 @@ const services = [
   },
   {
     icon: Monitor,
-    title: "Montagem de PCs",
+  Rocket,
+title: "Montagem de PCs",
     description: "Computadores personalizados para trabalho, estudo, criação e jogos."
   },
   {
@@ -147,6 +149,7 @@ export default function App() {
             <div className="art-orbit orbit-a" />
             <div className="art-orbit orbit-b" />
             <div className="art-glow" />
+              <div className="rocket-badge"><Rocket size={62} strokeWidth={1.35} /><span className="rocket-trail" /></div>
             <div className="laptop-art">
               <div className="laptop-lid">
                 <img className="screen-brand-logo" src="/images/nexus-logo-circular.jpeg" alt="Logotipo circular Nexus Digital Ecom" />
