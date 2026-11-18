@@ -1,8 +1,7 @@
- import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useState } from "react";
 import {
   ArrowRight, Code2, Cpu, Layers3, Menu, MessageCircle, Monitor,
-  Rocket, ShieldCheck, Table2, Target, TrendingUp, X, Zap
+  Rocket, ShieldCheck, Table2, Target, TrendingUp, X
 } from "lucide-react";
 import "./App.css";
 
@@ -95,11 +94,7 @@ export default function App() {
     <div className="site-shell">
       <header className="site-header">
         <a className="brand" href="#inicio" onClick={closeMenu} aria-label="Nexus Digital Ecom - início">
-          <span className="brand-mark">N</span>
-          <span className="brand-copy">
-            <strong>NEXUS</strong>
-            <small>DIGITAL ECOM</small>
-          </span>
+          <img className="brand-logo" src="/images/nexus-logo-white.png" alt="Nexus Digital Ecom" />
         </a>
 
         <button
@@ -134,10 +129,10 @@ export default function App() {
             </p>
 
             <ul className="hero-points">
-              <li><Zap size={18} /> Sistemas personalizados</li>
-              <li><Zap size={18} /> Planilhas inteligentes</li>
-              <li><Zap size={18} /> Montagem de PCs</li>
-              <li><Zap size={18} /> Soluções digitais completas</li>
+              <li>Sistemas personalizados</li>
+              <li>Planilhas inteligentes</li>
+              <li>Montagem de PCs</li>
+              <li>Soluções digitais completas</li>
             </ul>
 
             <div className="hero-actions">
@@ -148,30 +143,22 @@ export default function App() {
             </div>
           </div>
 
-          <motion.div
-            className="hero-art"
-            initial={{ opacity: 0, y: 25, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="hero-art hero-art-enter">
             <div className="art-orbit orbit-a" />
             <div className="art-orbit orbit-b" />
             <div className="art-glow" />
-            <div className="rocket-badge"><Rocket size={62} strokeWidth={1.35} /></div>
+            <div className="rocket-badge"><Rocket size={62} strokeWidth={1.35} /><span className="rocket-trail" /></div>
             <div className="laptop-art">
               <div className="laptop-lid">
-                <div className="screen-logo">N</div>
-                <strong>NEXUS</strong>
-                <small>DIGITAL ECOM</small>
-                <span className="screen-rule" />
+                <img className="screen-brand-logo" src="/images/nexus-emblem-neon.png" alt="Logotipo circular Nexus Digital Ecom" />
               </div>
               <div className="laptop-keyboard" />
               <div className="laptop-trackpad" />
             </div>
             <div className="art-caption">INOVAÇÃO QUE IMPULSIONA</div>
             <div className="floating-chip chip-one"><Cpu size={18} /> TECNOLOGIA</div>
-            <div className="floating-chip chip-two"><Zap size={18} /> PERFORMANCE</div>
-          </motion.div>
+            <div className="floating-chip chip-two"><TrendingUp size={18} /> PERFORMANCE</div>
+          </div>
         </section>
 
         <section className="benefit-strip">
@@ -192,14 +179,10 @@ export default function App() {
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <motion.article
+                <article
                   className="service-card"
                   key={service.title}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ delay: index * 0.1, duration: 0.45 }}
-                  whileHover={{ y: -7 }}
+                  style={{ "--card-index": index }}
                 >
                   <div className="service-icon"><Icon size={34} /></div>
                   <h3>{service.title}</h3>
@@ -211,7 +194,7 @@ export default function App() {
                   >
                     <ArrowRight size={19} />
                   </button>
-                </motion.article>
+                </article>
               );
             })}
           </div>
@@ -230,7 +213,10 @@ export default function App() {
 
         <section className="about section-wrap" id="sobre">
           <div className="about-intro">
-            <div className="about-emblem"><span>N</span><i>TECNOLOGIA • INOVAÇÃO • SOLUÇÕES</i></div>
+            <div className="about-emblem">
+            <img src="/images/nexus-emblem-neon.png" alt="Logotipo circular Nexus Digital Ecom" />
+            <i>TECNOLOGIA • INOVAÇÃO • SOLUÇÕES</i>
+          </div>
             <div className="about-location">
               <Target size={19} />
               <span>São Paulo • Jundiaí</span>
@@ -275,7 +261,7 @@ export default function App() {
             </article>
 
             <article className="pillar-card">
-              <div className="pillar-icon"><Zap /></div>
+              <div className="pillar-icon"><ShieldCheck /></div>
               <span>03 / NOSSA MISSÃO</span>
               <h3>Transformar desafios em soluções</h3>
               <p>
@@ -299,8 +285,7 @@ export default function App() {
 
       <footer className="site-footer" id="contato">
         <a className="brand" href="#inicio">
-          <span className="brand-mark">N</span>
-          <span className="brand-copy"><strong>NEXUS</strong><small>DIGITAL ECOM</small></span>
+          <img className="brand-logo" src="/images/nexus-logo-white.png" alt="Nexus Digital Ecom" />
         </a>
         <p>TECNOLOGIA • INOVAÇÃO • SOLUÇÕES</p>
         <button className="button button-primary" onClick={directWhatsApp}>
@@ -313,26 +298,18 @@ export default function App() {
         <MessageCircle size={25} />
       </button>
 
-      <AnimatePresence>
-        {formOpen && (
-          <motion.div
+      {formOpen && (
+          <div
             className="modal-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             onMouseDown={(event) => {
               if (event.target === event.currentTarget) setFormOpen(false);
             }}
           >
-            <motion.section
+            <section
               className="quote-modal"
               role="dialog"
               aria-modal="true"
               aria-labelledby="quote-title"
-              initial={{ opacity: 0, y: 22, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 15, scale: 0.98 }}
-              transition={{ duration: 0.22 }}
             >
               <button className="modal-close" onClick={() => setFormOpen(false)} aria-label="Fechar formulário">
                 <X size={21} />
@@ -373,10 +350,9 @@ export default function App() {
                 </button>
                 <small className="privacy-note">Seus dados serão usados para responder à sua solicitação.</small>
               </form>
-            </motion.section>
-          </motion.div>
+            </section>
+          </div>
         )}
-      </AnimatePresence>
     </div>
   );
 }

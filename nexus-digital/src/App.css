@@ -1,4 +1,4 @@
- .site-shell {
+.site-shell {
   min-height: 100vh;
   overflow: hidden;
   background:
@@ -130,7 +130,15 @@
 .hero-description { max-width: 470px; color: #c8d9ed; font-size: 16px; line-height: 1.75; }
 .hero-points { display: grid; gap: 12px; list-style: none; padding: 0; margin: 25px 0 27px; }
 .hero-points li { display: flex; align-items: center; gap: 11px; color: #edf8ff; font-size: 13px; font-weight: 500; }
-.hero-points svg { color: #00dfff; filter: drop-shadow(0 0 6px #00bfff); }
+.hero-points li::before {
+  content: "";
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00dfff;
+  box-shadow: 0 0 9px rgba(0, 215, 255, .8);
+}
 .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
 
 .hero-art { min-height: 430px; position: relative; display: flex; align-items: center; justify-content: center; isolation: isolate; }
@@ -349,4 +357,189 @@
   .about-copy h2 em { font-size: .9em; }
   .company-pillars { grid-template-columns: 1fr; gap: 12px; }
   .pillar-card { min-height: auto; padding: 21px; }
+}
+
+
+/* LOGO OFICIAL NEXUS + MOVIMENTO REFORÇADO */
+.brand-logo {
+  display: block;
+  width: 184px;
+  height: auto;
+  max-height: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0, 174, 255, .28));
+}
+.site-footer .brand-logo { width: 170px; max-height: 48px; }
+.screen-brand-logo {
+  display: block;
+  width: 68%;
+  max-width: 270px;
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px rgba(0, 205, 255, .36));
+}
+.laptop-lid { gap: 0; }
+.about-emblem img {
+  display: block;
+  width: 78%;
+  max-width: 330px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0, 150, 255, .32));
+}
+.about-emblem { gap: 14px; padding: 28px; }
+.about-emblem i { margin-top: 0; }
+
+/* Animações contínuas e de entrada para dar vida ao site */
+.hero-copy .eyebrow { animation: fadeSlideUp .75s both; }
+.hero-copy h1 { animation: fadeSlideUp .85s .12s both; }
+.hero-description { animation: fadeSlideUp .85s .22s both; }
+.hero-points li { animation: fadeSlideUp .55s both; }
+.hero-points li:nth-child(1) { animation-delay: .25s; }
+.hero-points li:nth-child(2) { animation-delay: .34s; }
+.hero-points li:nth-child(3) { animation-delay: .43s; }
+.hero-points li:nth-child(4) { animation-delay: .52s; }
+.hero-actions { animation: fadeSlideUp .7s .58s both; }
+.art-glow { animation: pulseGlow 4s ease-in-out infinite; }
+.art-orbit { animation: orbit 14s linear infinite; }
+.orbit-b { animation-duration: 19s; }
+.laptop-art { animation: laptopFloat 5s ease-in-out infinite; }
+.rocket-badge { animation: rocketFloat 3.2s ease-in-out infinite; }
+.floating-chip { animation: chipFloat 4.5s ease-in-out infinite; }
+.chip-two { animation-delay: -2s; }
+.brand-logo { transition: filter .3s ease, transform .3s ease; }
+.brand:hover .brand-logo { transform: translateY(-2px); filter: drop-shadow(0 0 16px rgba(0, 205, 255, .6)); }
+.service-card { animation: cardGlow 5s ease-in-out infinite; }
+.service-card:nth-child(2) { animation-delay: -1.2s; }
+.service-card:nth-child(3) { animation-delay: -2.4s; }
+.service-card:nth-child(4) { animation-delay: -3.6s; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: .18; transform: scale(.92); }
+  50% { opacity: .36; transform: scale(1.12); }
+}
+@keyframes laptopFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+@keyframes chipFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+@keyframes cardGlow {
+  0%, 100% { box-shadow: inset 0 0 28px rgba(0, 131, 255, .07); }
+  50% { box-shadow: inset 0 0 28px rgba(0, 131, 255, .14), 0 0 13px rgba(0, 174, 255, .09); }
+}
+
+@media (max-width: 700px) {
+  .brand-logo { width: 155px; max-height: 45px; }
+  .site-footer .brand-logo { width: 155px; }
+  .screen-brand-logo { width: 75%; max-height: 78px; }
+  .about-emblem img { width: 82%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy .eyebrow, .hero-copy h1, .hero-description,
+  .hero-points li, .hero-actions, .art-glow, .art-orbit,
+  .laptop-art, .rocket-badge, .floating-chip, .service-card {
+    animation: none !important;
+  }
+}
+
+
+/* Compatibilidade: animações feitas em CSS, sem biblioteca de animação externa */
+.hero-art-enter { animation: heroArtEnter .9s .12s both; }
+.service-card { animation: serviceCardEnter .65s both, cardGlow 5s ease-in-out infinite; animation-delay: calc(var(--card-index, 0) * .12s), 0s; }
+.service-card:hover { transform: translateY(-7px); }
+.modal-backdrop { animation: backdropIn .18s ease-out both; }
+.quote-modal { animation: modalIn .24s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes heroArtEnter {
+  from { opacity: 0; transform: translateY(25px) scale(.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes serviceCardEnter {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes backdropIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(22px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+/* Movimento mais perceptível no destaque principal */
+.hero-art { perspective: 1100px; }
+.rocket-badge {
+  animation: rocketFlight 2.8s ease-in-out infinite !important;
+  transform-origin: 50% 65%;
+  will-change: transform;
+}
+.rocket-badge svg { filter: drop-shadow(0 0 10px rgba(0, 215, 255, .9)); }
+.rocket-trail {
+  position: absolute;
+  width: 9px; height: 34px;
+  left: 20px; bottom: -27px;
+  border-radius: 50% 50% 70% 70%;
+  background: linear-gradient(#fff, #00eaff 38%, rgba(0, 128, 255, 0));
+  filter: blur(3px);
+  transform: rotate(-42deg);
+  animation: rocketFlame .42s ease-in-out infinite alternate;
+}
+.art-orbit {
+  transform-origin: center;
+  animation: orbitSpin 10s linear infinite !important;
+  will-change: transform;
+}
+.orbit-b { animation-duration: 15s !important; animation-direction: reverse !important; }
+.art-glow { animation: glowPulse 3s ease-in-out infinite !important; }
+.laptop-art {
+  animation: laptopBob 4s ease-in-out infinite !important;
+  will-change: transform;
+}
+.floating-chip { animation: chipBob 3s ease-in-out infinite !important; }
+.chip-two { animation-delay: -1.5s !important; }
+.screen-brand-logo {
+  width: 56%;
+  max-width: 220px;
+  max-height: 195px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 17px rgba(0, 179, 255, .55));
+}
+.about-emblem img {
+  width: min(76%, 285px);
+  max-height: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 22px rgba(0, 151, 255, .4));
+}
+@keyframes rocketFlight {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(38deg); }
+  25% { transform: translate3d(10px, -13px, 0) rotate(43deg); }
+  55% { transform: translate3d(-3px, -24px, 0) rotate(35deg); }
+  80% { transform: translate3d(-10px, -8px, 0) rotate(41deg); }
+}
+@keyframes rocketFlame {
+  from { opacity: .45; scale: .75 .8; }
+  to { opacity: 1; scale: 1.25 1.35; }
+}
+@keyframes orbitSpin {
+  from { transform: rotate(-22deg); }
+  to { transform: rotate(338deg); }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: .18; scale: .9; }
+  50% { opacity: .43; scale: 1.18; }
+}
+@keyframes laptopBob {
+  0%, 100% { transform: perspective(900px) rotateY(-7deg) translateY(0); }
+  50% { transform: perspective(900px) rotateY(-7deg) translateY(-13px); }
+}
+@keyframes chipBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-11px); }
 }
