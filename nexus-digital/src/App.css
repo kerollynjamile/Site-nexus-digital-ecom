@@ -571,3 +571,11 @@
     width: min(68vw, 230px);
   }
 }
+
+
+/* Logo horizontal do cabeçalho e rodapé com cantos suavemente arredondados */
+.brand-logo {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
