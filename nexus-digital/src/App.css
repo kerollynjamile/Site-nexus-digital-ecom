@@ -551,3 +551,23 @@
   .rocket-badge { top: 4%; right: 8%; }
   .rocket-badge svg { width: 55px; }
 }
+
+/* Emblema da seção Sobre: imagem recortada em círculo, igual ao logo central */
+.about-emblem img {
+  width: clamp(170px, 72%, 270px);
+  aspect-ratio: 1 / 1;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  background: #fff;
+  padding: 0;
+  border: 3px solid rgba(0, 210, 255, .65);
+  box-shadow: 0 0 0 7px rgba(0, 135, 255, .10), 0 0 35px rgba(0, 190, 255, .28);
+}
+@media (max-width: 700px) {
+  .about-emblem img {
+    width: min(68vw, 230px);
+  }
+}
